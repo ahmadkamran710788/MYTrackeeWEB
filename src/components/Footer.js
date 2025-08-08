@@ -82,7 +82,7 @@ const Footer = () => {
               <a href="https://www.instagram.com/mytrackeepakistan?igsh=MWFpbW95bWo1a283eg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/mytrackee/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
             </div>
