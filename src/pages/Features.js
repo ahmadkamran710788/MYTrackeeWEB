@@ -327,7 +327,7 @@ const Features = () => {
             <h2>GET OUR CORPORATE PACKAGES NOW</h2>
             <div className="cta-phone">
               <FontAwesomeIcon icon={faPhoneAlt} />
-              <span>+92-337-222 4455</span>
+              <span>+92-309-5555213</span>
             </div>
           </div>
         </div>
