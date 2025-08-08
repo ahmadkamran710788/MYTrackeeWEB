@@ -20,9 +20,9 @@ const Header = () => {
             <div className="contact-info">
               <span>Need Assistance? Please Call: +92-309-5555213</span>
             </div>
-            <div className="cta-button">
+            {/* <div className="cta-button">
               <button className="get-offer-btn">Get Offer</button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
