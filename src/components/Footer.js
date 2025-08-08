@@ -40,19 +40,19 @@ const Footer = () => {
               <div className="contact-info">
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  <span>Flat No. 4, Block No. 30, Street 118, G-11/4, Islamabad</span>
+                  <span>Office no 5 3rd floor executive complex g8 markaz Islamabad</span>
                 </div>
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faEnvelope} />
-                  <span>info@mytrackee.pk</span>
+                  <span>mohsin@mytrackee.com</span>
                 </div>
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faPhone} />
-                  <span>+92-317-222 6677</span>
+                  <span>0518844555</span>
                 </div>
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faPhone} />
-                  <span>+92-337-222 6677</span>
+                  <span>+92-309-5555213</span>
                 </div>
               </div>
             </div>
@@ -101,8 +101,8 @@ const Footer = () => {
       </div>
       
       <div className="floating-cta">
-        <a href="tel:+92-317-2226677" className="call-now-btn">
-          Call Now 0317-2226677
+        <a href="tel:+92-309-5555213" className="call-now-btn">
+          Call Now 03095555213
         </a>
       </div>
     </footer>
