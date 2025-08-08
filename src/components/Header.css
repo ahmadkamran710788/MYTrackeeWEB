@@ -53,20 +53,13 @@
 .logo a {
   text-decoration: none;
   color: #1e3a8a;
+  display: flex;
+  align-items: center;
 }
 
-.logo h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: bold;
-  color: #1e3a8a;
-}
-
-.logo span {
-  font-size: 12px;
-  color: #6b7280;
-  display: block;
-  margin-top: -5px;
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 .nav-menu {
@@ -196,9 +189,7 @@
     display: block;
   }
   
-  .logo h1 {
-    font-size: 24px;
-  }
+
 }
 
 @media (max-width: 480px) {
@@ -206,11 +197,5 @@
     padding: 0 15px;
   }
   
-  .logo h1 {
-    font-size: 20px;
-  }
-  
-  .logo span {
-    font-size: 10px;
-  }
+
 } 

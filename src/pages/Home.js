@@ -19,15 +19,300 @@ import {
   faHandshake,
   faQuoteLeft,
   faPhoneAlt,
-  faArrowRight
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Home.css';
 
 const Home = () => {
   const [activeFAQ, setActiveFAQ] = useState(null);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phoneNumber: '',
+    selectedPlan: '',
+    message: 'I\'m interested in more details.'
+  });
+  const [selectedCountryCode, setSelectedCountryCode] = useState('+92');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  
+  // Callback form state
+  const [callbackFormData, setCallbackFormData] = useState({
+    name: '',
+    phoneNumber: '',
+    selectedService: '',
+    message: ''
+  });
+  const [callbackCountryCode, setCallbackCountryCode] = useState('+92');
+  const [isCallbackSubmitting, setIsCallbackSubmitting] = useState(false);
+
+  // Order modal state
+  const [showOrderModal, setShowOrderModal] = useState(false);
+  const [orderFormData, setOrderFormData] = useState({
+    phoneNumber: '',
+    selectedPackage: '',
+    message: ''
+  });
+  const [orderCountryCode, setOrderCountryCode] = useState('+92');
+  const [isOrderSubmitting, setIsOrderSubmitting] = useState(false);
+
+  const countryCodes = [
+    { code: '+92', country: 'Pakistan', flag: '🇵🇰' },
+    { code: '+1', country: 'USA/Canada', flag: '🇺🇸' },
+    { code: '+44', country: 'UK', flag: '🇬🇧' },
+    { code: '+91', country: 'India', flag: '🇮🇳' },
+    { code: '+971', country: 'UAE', flag: '🇦🇪' },
+    { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+    { code: '+61', country: 'Australia', flag: '🇦🇺' },
+    { code: '+49', country: 'Germany', flag: '🇩🇪' },
+    { code: '+33', country: 'France', flag: '🇫🇷' },
+    { code: '+39', country: 'Italy', flag: '🇮🇹' },
+    { code: '+34', country: 'Spain', flag: '🇪🇸' },
+    { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+    { code: '+46', country: 'Sweden', flag: '🇸🇪' },
+    { code: '+47', country: 'Norway', flag: '🇳🇴' },
+    { code: '+45', country: 'Denmark', flag: '🇩🇰' },
+    { code: '+358', country: 'Finland', flag: '🇫🇮' },
+    { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+    { code: '+43', country: 'Austria', flag: '🇦🇹' },
+    { code: '+32', country: 'Belgium', flag: '🇧🇪' },
+    { code: '+48', country: 'Poland', flag: '🇵🇱' },
+    { code: '+420', country: 'Czech Republic', flag: '🇨🇿' },
+    { code: '+36', country: 'Hungary', flag: '🇭🇺' },
+    { code: '+40', country: 'Romania', flag: '🇷🇴' },
+    { code: '+421', country: 'Slovakia', flag: '🇸🇰' },
+    { code: '+386', country: 'Slovenia', flag: '🇸🇮' },
+    { code: '+385', country: 'Croatia', flag: '🇭🇷' },
+    { code: '+387', country: 'Bosnia', flag: '🇧🇦' },
+    { code: '+382', country: 'Montenegro', flag: '🇲🇪' },
+    { code: '+389', country: 'Macedonia', flag: '🇲🇰' },
+    { code: '+381', country: 'Serbia', flag: '🇷🇸' },
+    { code: '+30', country: 'Greece', flag: '🇬🇷' },
+    { code: '+351', country: 'Portugal', flag: '🇵🇹' },
+    { code: '+353', country: 'Ireland', flag: '🇮🇪' },
+    { code: '+352', country: 'Luxembourg', flag: '🇱🇺' },
+    { code: '+356', country: 'Malta', flag: '🇲🇹' },
+    { code: '+357', country: 'Cyprus', flag: '🇨🇾' },
+    { code: '+370', country: 'Lithuania', flag: '🇱🇹' },
+    { code: '+371', country: 'Latvia', flag: '🇱🇻' },
+    { code: '+372', country: 'Estonia', flag: '🇪🇪' },
+    { code: '+375', country: 'Belarus', flag: '🇧🇾' },
+    { code: '+380', country: 'Ukraine', flag: '🇺🇦' },
+    { code: '+7', country: 'Russia', flag: '🇷🇺' },
+    { code: '+90', country: 'Turkey', flag: '🇹🇷' },
+    { code: '+972', country: 'Israel', flag: '🇮🇱' },
+    { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+    { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+    { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+    { code: '+254', country: 'Kenya', flag: '🇰🇪' },
+    { code: '+233', country: 'Ghana', flag: '🇬🇭' },
+    { code: '+256', country: 'Uganda', flag: '🇺🇬' },
+    { code: '+255', country: 'Tanzania', flag: '🇹🇿' },
+    { code: '+251', country: 'Ethiopia', flag: '🇪🇹' },
+    { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+    { code: '+977', country: 'Nepal', flag: '🇳🇵' },
+    { code: '+94', country: 'Sri Lanka', flag: '🇱🇰' },
+    { code: '+95', country: 'Myanmar', flag: '🇲🇲' },
+    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+    { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+    { code: '+855', country: 'Cambodia', flag: '🇰🇭' },
+    { code: '+856', country: 'Laos', flag: '🇱🇦' },
+    { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+    { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+    { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+    { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+    { code: '+81', country: 'Japan', flag: '🇯🇵' },
+    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+    { code: '+86', country: 'China', flag: '🇨🇳' },
+    { code: '+852', country: 'Hong Kong', flag: '🇭🇰' },
+    { code: '+886', country: 'Taiwan', flag: '🇹🇼' },
+    { code: '+852', country: 'Macau', flag: '🇲🇴' },
+    { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+    { code: '+977', country: 'Nepal', flag: '🇳🇵' },
+    { code: '+94', country: 'Sri Lanka', flag: '🇱🇰' },
+    { code: '+95', country: 'Myanmar', flag: '🇲🇲' },
+    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+    { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+    { code: '+855', country: 'Cambodia', flag: '🇰🇭' },
+    { code: '+856', country: 'Laos', flag: '🇱🇦' },
+    { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+    { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+    { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+    { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+    { code: '+81', country: 'Japan', flag: '🇯🇵' },
+    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+    { code: '+86', country: 'China', flag: '🇨🇳' },
+    { code: '+852', country: 'Hong Kong', flag: '🇭🇰' },
+    { code: '+886', country: 'Taiwan', flag: '🇹🇼' },
+    { code: '+853', country: 'Macau', flag: '🇲🇴' }
+  ];
 
   const toggleFAQ = (index) => {
     setActiveFAQ(activeFAQ === index ? null : index);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleCallbackInputChange = (e) => {
+    const { name, value } = e.target;
+    setCallbackFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    // Combine country code with phone number
+    const fullPhoneNumber = selectedCountryCode + formData.phoneNumber;
+    const submitData = {
+      ...formData,
+      phoneNumber: fullPhoneNumber
+    };
+
+    try {
+      const response = await fetch(`https://mytrackee-b16996ba42cc.herokuapp.com/mytrackee/package/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Thank you! Your request has been submitted successfully.');
+        setFormData({
+          fullName: '',
+          phoneNumber: '',
+          selectedPlan: '',
+          message: 'I\'m interested in more details.'
+        });
+        setSelectedCountryCode('+92');
+      } else {
+        toast.error('Sorry, there was an error submitting your request. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Sorry, there was an error submitting your request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCallbackSubmit = async (e) => {
+    e.preventDefault();
+    setIsCallbackSubmitting(true);
+
+    // Combine country code with phone number
+    const fullPhoneNumber = callbackCountryCode + callbackFormData.phoneNumber;
+    const submitData = {
+      ...callbackFormData,
+      phoneNumber: fullPhoneNumber
+    };
+
+    try {
+      const response = await fetch(`https://mytrackee-b16996ba42cc.herokuapp.com/mytrackee/callback/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Thank you! Your callback request has been submitted successfully.');
+        setCallbackFormData({
+          name: '',
+          phoneNumber: '',
+          selectedService: '',
+          message: ''
+        });
+        setCallbackCountryCode('+92');
+      } else {
+        toast.error('Sorry, there was an error submitting your callback request. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Sorry, there was an error submitting your callback request. Please try again.');
+    } finally {
+      setIsCallbackSubmitting(false);
+    }
+  };
+
+  // Order modal functions
+  const openOrderModal = (packageName) => {
+    setOrderFormData({
+      phoneNumber: '',
+      selectedPackage: packageName.toLowerCase(),
+      message: ''
+    });
+    setOrderCountryCode('+92');
+    setShowOrderModal(true);
+  };
+
+  const closeOrderModal = () => {
+    setShowOrderModal(false);
+    setOrderFormData({
+      phoneNumber: '',
+      selectedPackage: '',
+      message: ''
+    });
+  };
+
+  const handleOrderInputChange = (e) => {
+    const { name, value } = e.target;
+    setOrderFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleOrderSubmit = async (e) => {
+    e.preventDefault();
+    setIsOrderSubmitting(true);
+
+    // Combine country code with phone number
+    const fullPhoneNumber = orderCountryCode + orderFormData.phoneNumber;
+    const submitData = {
+      phoneNumber: fullPhoneNumber,
+      selectedPackage: orderFormData.selectedPackage,
+      message: orderFormData.message
+    };
+
+    try {
+      const response = await fetch(`https://mytrackee-b16996ba42cc.herokuapp.com/mytrackee/order/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Order placed successfully!');
+        closeOrderModal();
+      } else {
+        toast.error('Sorry, there was an error placing your order. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Sorry, there was an error placing your order. Please try again.');
+    } finally {
+      setIsOrderSubmitting(false);
+    }
   };
 
   const faqs = [
@@ -231,26 +516,22 @@ const Home = () => {
     }
   ];
 
-  const blogPosts = [
-    {
-      image: "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      title: "How Car Tracking Data Can Improve Urban Planning in Pakistan",
-      excerpt: "Discover how GPS tracking data is revolutionizing urban planning and traffic management across Pakistan's major cities."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      title: "The Ultimate Guide To Live Tracking in Pakistan",
-      excerpt: "Everything you need to know about real-time vehicle tracking technology and its applications in Pakistan."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      title: "The Ultimate Guide to Bike Tracker Prices in Pakistan",
-      excerpt: "Complete pricing guide for motorcycle tracking solutions and the best options available in Pakistan."
-    }
-  ];
+
 
   return (
     <div className="home-page">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-background">
@@ -269,25 +550,71 @@ const Home = () => {
                   <FontAwesomeIcon icon={faCar} className="form-icon" />
                   <h3>Get Started Today</h3>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <input type="text" placeholder="Full Name*" required />
+                    <input 
+                      type="text" 
+                      name="fullName"
+                      placeholder="Full Name*" 
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      required 
+                    />
+                  </div>
+                  <div className="form-group phone-group">
+                    <div className="country-code-dropdown">
+                      <select 
+                        value={selectedCountryCode}
+                        onChange={(e) => setSelectedCountryCode(e.target.value)}
+                        className="country-select"
+                      >
+                        {countryCodes.map((country, index) => (
+                          <option key={index} value={country.code}>
+                            {country.flag} {country.code}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <input 
+                      type="tel" 
+                      name="phoneNumber"
+                      placeholder="Phone Number*" 
+                      value={formData.phoneNumber}
+                      onChange={handleInputChange}
+                      className="phone-input"
+                      required 
+                    />
                   </div>
                   <div className="form-group">
-                    <input type="tel" placeholder="Phone Number*" required />
-                  </div>
-                  <div className="form-group">
-                    <select required>
+                    <select 
+                      name="selectedPlan"
+                      value={formData.selectedPlan}
+                      onChange={handleInputChange}
+                      required
+                    >
                       <option value="">Choose Plan*</option>
-                      <option value="car-tracking">Car Tracking</option>
-                      <option value="bike-tracking">Bike Tracking</option>
-                      <option value="fleet-management">Fleet Management</option>
+                      <option value="Car Tracking">Car Tracking</option>
+                      <option value="Bike Tracking">Bike Tracking</option>
+                      <option value="Fleet Management">Fleet Management</option>
                     </select>
                   </div>
                   <div className="form-group">
-                    <textarea placeholder="Message" rows="4"></textarea>
+                    <textarea 
+                      name="message"
+                      placeholder="Message" 
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows="4"
+                    ></textarea>
                   </div>
-                  <button type="submit" className="btn btn-submit">Submit</button>
+                  {submitMessage && (
+                    <div className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
+                      {submitMessage}
+                    </div>
+                  )}
+                  <button type="submit" className="btn btn-submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </button>
                 </form>
               </div>
             </div>
@@ -352,7 +679,7 @@ const Home = () => {
             </div>
             <div className="services-intro">
               <p>Sign Track Pvt Ltd Company excels all the other service providers in the GPS tracker fraternity.</p>
-              <Link to="/contact" className="btn btn-primary">Contact Us</Link>
+                              <Link to="/features" className="btn btn-primary">View Features</Link>
             </div>
           </div>
           
@@ -393,7 +720,12 @@ const Home = () => {
                     </div>
                   ))}
                 </div>
-                <button className="btn btn-order">ORDER NOW</button>
+                <button 
+                  className="btn btn-order" 
+                  onClick={() => openOrderModal(plan.name)}
+                >
+                  ORDER NOW
+                </button>
               </div>
             ))}
           </div>
@@ -509,24 +841,66 @@ const Home = () => {
             <div className="callback-section">
               <div className="callback-background">
                 <h3>Request A Call Back</h3>
-                <form className="callback-form">
+                <form className="callback-form" onSubmit={handleCallbackSubmit}>
                   <div className="form-group">
-                    <input type="text" placeholder="Name*" required />
+                    <input 
+                      type="text" 
+                      name="name"
+                      placeholder="Name*" 
+                      value={callbackFormData.name}
+                      onChange={handleCallbackInputChange}
+                      required 
+                    />
+                  </div>
+                  <div className="form-group phone-group">
+                    <div className="country-code-dropdown">
+                      <select 
+                        value={callbackCountryCode}
+                        onChange={(e) => setCallbackCountryCode(e.target.value)}
+                        className="country-select"
+                      >
+                        {countryCodes.map((country, index) => (
+                          <option key={index} value={country.code}>
+                            {country.flag} {country.code}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <input 
+                      type="tel" 
+                      name="phoneNumber"
+                      placeholder="Phone Number*" 
+                      value={callbackFormData.phoneNumber}
+                      onChange={handleCallbackInputChange}
+                      className="phone-input"
+                      required 
+                    />
                   </div>
                   <div className="form-group">
-                    <input type="tel" placeholder="Phone Number*" required />
-                  </div>
-                  <div className="form-group">
-                    <select required>
-                      <option value="car-tracking">Car Tracking</option>
-                      <option value="bike-tracking">Bike Tracking</option>
-                      <option value="fleet-management">Fleet Management</option>
+                    <select 
+                      name="selectedService"
+                      value={callbackFormData.selectedService}
+                      onChange={handleCallbackInputChange}
+                      required
+                    >
+                      <option value="">Select Service*</option>
+                      <option value="Car Tracking">Car Tracking</option>
+                      <option value="Bike Tracking">Bike Tracking</option>
+                      <option value="Fleet Management">Fleet Management</option>
                     </select>
                   </div>
                   <div className="form-group">
-                    <textarea placeholder="Message" rows="4"></textarea>
+                    <textarea 
+                      name="message"
+                      placeholder="Message" 
+                      value={callbackFormData.message}
+                      onChange={handleCallbackInputChange}
+                      rows="4"
+                    ></textarea>
                   </div>
-                  <button type="submit" className="btn btn-send">Send</button>
+                  <button type="submit" className="btn btn-send" disabled={isCallbackSubmitting}>
+                    {isCallbackSubmitting ? 'Sending...' : 'Send'}
+                  </button>
                 </form>
               </div>
             </div>
@@ -585,30 +959,72 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Latest Posts Section */}
-      <section className="latest-posts-section">
-        <div className="container">
-          <div className="posts-header">
-            <h2>LATEST POSTS</h2>
-          </div>
-          <div className="posts-grid">
-            {blogPosts.map((post, index) => (
-              <div key={index} className="post-card">
-                <div className="post-image">
-                  <img src={post.image} alt={post.title} />
+      {/* Order Modal */}
+      {showOrderModal && (
+        <div className="modal-overlay" onClick={closeOrderModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Place Order - {orderFormData.selectedPackage.charAt(0).toUpperCase() + orderFormData.selectedPackage.slice(1)} Package</h3>
+              <button className="modal-close" onClick={closeOrderModal}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            <form onSubmit={handleOrderSubmit} className="order-form">
+              <div className="form-group phone-group">
+                <div className="country-code-dropdown">
+                  <select 
+                    value={orderCountryCode}
+                    onChange={(e) => setOrderCountryCode(e.target.value)}
+                    className="country-select"
+                  >
+                    {countryCodes.map((country, index) => (
+                      <option key={index} value={country.code}>
+                        {country.flag} {country.code}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <div className="post-content">
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                  <Link to="/blog" className="read-more">
-                    Read More <FontAwesomeIcon icon={faArrowRight} />
-                  </Link>
-                </div>
+                <input 
+                  type="tel" 
+                  name="phoneNumber"
+                  placeholder="Phone Number*" 
+                  value={orderFormData.phoneNumber}
+                  onChange={handleOrderInputChange}
+                  className="phone-input"
+                  required 
+                />
               </div>
-            ))}
+              <div className="form-group">
+                <label>Selected Package:</label>
+                <input 
+                  type="text" 
+                  value={orderFormData.selectedPackage.charAt(0).toUpperCase() + orderFormData.selectedPackage.slice(1)}
+                  readOnly
+                  className="package-display"
+                />
+              </div>
+              <div className="form-group">
+                <textarea 
+                  name="message"
+                  placeholder="Message (optional)" 
+                  value={orderFormData.message}
+                  onChange={handleOrderInputChange}
+                  rows="4"
+                ></textarea>
+              </div>
+              <div className="modal-actions">
+                <button type="button" className="btn btn-secondary" onClick={closeOrderModal}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary" disabled={isOrderSubmitting}>
+                  {isOrderSubmitting ? 'Placing Order...' : 'Confirm Order'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
+      )}
+
     </div>
   );
 };

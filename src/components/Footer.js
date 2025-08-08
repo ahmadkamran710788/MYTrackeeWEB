@@ -12,6 +12,7 @@ import {
   faInstagram, 
   faLinkedin 
 } from '@fortawesome/free-brands-svg-icons';
+import Logo from './Logo';
 import './Footer.css';
 
 const Footer = () => {
@@ -21,32 +22,21 @@ const Footer = () => {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3>Signtrack</h3>
-              <p>Signtrack is a team of experts dedicated to providing top-of-the-line GPS-based tracking solutions for individuals and businesses.</p>
-            </div>
-            
-            <div className="footer-section">
-              <h4>Other Pages</h4>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/contact">Contact Us</Link></li>
-                <li><Link to="/blogs">Blogs</Link></li>
-              </ul>
+              <Logo size="small" showTagline={false} />
+              <p>myTrackee is a team of experts dedicated to providing top-of-the-line GPS-based tracking solutions for individuals and businesses.</p>
             </div>
             
             <div className="footer-section">
               <h4>Quick Links</h4>
               <ul>
-                <li><Link to="/car-tracker-price">Car Tracker Price</Link></li>
-                <li><Link to="/bike-tracker-price">Bike Tracker Price</Link></li>
-                <li><Link to="/fleet-management">Fleet Management</Link></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/features">Features</Link></li>
               </ul>
             </div>
             
             <div className="footer-section">
-              <h4>Newsletter</h4>
+              <h4>Contact Info</h4>
               <div className="contact-info">
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faMapMarkerAlt} />
@@ -54,7 +44,7 @@ const Footer = () => {
                 </div>
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faEnvelope} />
-                  <span>info@signtrack.pk</span>
+                  <span>info@mytrackee.pk</span>
                 </div>
                 <div className="contact-item">
                   <FontAwesomeIcon icon={faPhone} />
@@ -64,6 +54,15 @@ const Footer = () => {
                   <FontAwesomeIcon icon={faPhone} />
                   <span>+92-337-222 6677</span>
                 </div>
+              </div>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Newsletter</h4>
+              <p>Subscribe to our newsletter for updates and offers.</p>
+              <div className="newsletter-form">
+                <input type="email" placeholder="Enter your email" />
+                <button type="submit">Subscribe</button>
               </div>
             </div>
           </div>
@@ -89,7 +88,7 @@ const Footer = () => {
             </div>
             
             <div className="copyright">
-              <p>Copyright © 2025 SignTrack.pk</p>
+              <p>Copyright © 2025 myTrackee.pk</p>
             </div>
             
             <div className="footer-links">

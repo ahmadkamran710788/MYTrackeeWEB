@@ -1,0 +1,221 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon {
+  flex-shrink: 0;
+}
+
+.map-pin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pin-top {
+  width: 20px;
+  height: 8px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+
+.pin-top::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+  border: 2px solid #1e3a8a;
+}
+
+.pin-body {
+  width: 32px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 0 0 16px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.pin-stripes {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stripe {
+  width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1px;
+}
+
+.pin-text {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  margin-top: 4px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.logo-tagline {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Size variants */
+.logo-container.small .pin-top {
+  width: 16px;
+  height: 6px;
+}
+
+.logo-container.small .pin-top::before {
+  width: 6px;
+  height: 6px;
+}
+
+.logo-container.small .pin-body {
+  width: 24px;
+  height: 30px;
+}
+
+.logo-container.small .pin-text {
+  font-size: 10px;
+}
+
+.logo-container.small .logo-title {
+  font-size: 18px;
+}
+
+.logo-container.small .logo-tagline {
+  font-size: 10px;
+}
+
+.logo-container.large .pin-top {
+  width: 24px;
+  height: 10px;
+}
+
+.logo-container.large .pin-top::before {
+  width: 10px;
+  height: 10px;
+}
+
+.logo-container.large .pin-body {
+  width: 40px;
+  height: 50px;
+}
+
+.logo-container.large .pin-text {
+  font-size: 18px;
+}
+
+.logo-container.large .logo-title {
+  font-size: 32px;
+}
+
+.logo-container.large .logo-tagline {
+  font-size: 14px;
+}
+
+/* Hover effects */
+.logo-container:hover .pin-body {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.logo-container:hover .pin-top {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Footer specific styles */
+.footer .logo-container .logo-title {
+  color: #fbbf24;
+}
+
+.footer .logo-container .logo-tagline {
+  color: #cbd5e1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .logo-container {
+    gap: 8px;
+  }
+  
+  .logo-title {
+    font-size: 20px;
+  }
+  
+  .logo-tagline {
+    font-size: 11px;
+  }
+  
+  .pin-body {
+    width: 28px;
+    height: 35px;
+  }
+  
+  .pin-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    gap: 6px;
+  }
+  
+  .logo-title {
+    font-size: 18px;
+  }
+  
+  .logo-tagline {
+    font-size: 10px;
+  }
+  
+  .pin-body {
+    width: 24px;
+    height: 30px;
+  }
+  
+  .pin-text {
+    font-size: 10px;
+  }
+} 
