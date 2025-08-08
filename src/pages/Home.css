@@ -717,7 +717,7 @@
   transform: none;
 }
 
-.testimonials-section {
+.our-clients-section {
   background: #10b981;
   padding: 40px;
   border-radius: 12px;
@@ -727,52 +727,22 @@
   justify-content: center;
 }
 
-.testimonials-section h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
-}
 
-.testimonial-content {
-  text-align: center;
-}
 
-.quote-icon {
-  font-size: 48px;
-  color: rgba(255, 255, 255, 0.3);
-  margin-bottom: 20px;
-}
-
-.testimonial-content p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  font-style: italic;
-}
-
-.client-info {
+.clients-image-container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
 }
 
-.client-avatar {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.client-name {
-  font-weight: 600;
-  font-size: 16px;
+.corporate-clients-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* FAQ Section */
@@ -945,7 +915,7 @@
   }
   
   .callback-background,
-  .testimonials-section {
+  .our-clients-section {
     padding: 30px 20px;
   }
   

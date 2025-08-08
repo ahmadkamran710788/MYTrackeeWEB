@@ -30,7 +30,7 @@ const Footer = () => {
               <h4>Quick Links</h4>
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About Us</Link></li>
+                {/* <li><Link to="/about">About Us</Link></li> */}
                 <li><Link to="/features">Features</Link></li>
               </ul>
             </div>
@@ -73,16 +73,16 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-content">
             <div className="social-links">
-              <a href="#" aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1B9f1Y3c4f/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a href="#" aria-label="Twitter">
+              <a href="https://x.com/mytrackee?t=iyVrugR8hE-vJOOZ9oFnGA&s=08" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://www.instagram.com/mytrackeepakistan?igsh=MWFpbW95bWo1a283eg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" aria-label="LinkedIn">
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
             </div>

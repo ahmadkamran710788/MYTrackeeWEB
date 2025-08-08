@@ -905,15 +905,9 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="testimonials-section">
-              <h3>What Client Say About Us</h3>
-              <div className="testimonial-content">
-                <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
-                <p>I've been using the car tracking service from MyTrackee for the past year and it has been a game changer for my business. Not only can I see the real-time location of my fleet, but the detailed reports have helped me optimize routes and reduce fuel costs.</p>
-                <div className="client-info">
-                  <div className="client-avatar">UZ</div>
-                  <span className="client-name">Usama Zafar</span>
-                </div>
+            <div className="our-clients-section">
+              <div className="clients-image-container">
+                <img src="/company.jpeg" alt="Our Corporate Clients" className="corporate-clients-image" />
               </div>
             </div>
           </div>
