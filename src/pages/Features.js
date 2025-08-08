@@ -244,7 +244,7 @@ const Features = () => {
           <div className="main-features-content">
             <div className="main-features-text">
               <h2>WE OFFER THE BEST SERVICE FOR YOU</h2>
-              <p>Sign Track Pvt Ltd Company excels all the other service providers in the GPS tracker fraternity.</p>
+              <p>MyTrackee Pvt Ltd Company excels all the other service providers in the GPS tracker fraternity.</p>
               <button className="learn-more-btn">Learn More</button>
             </div>
             

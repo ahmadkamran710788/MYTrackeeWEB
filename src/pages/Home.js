@@ -326,10 +326,10 @@ const Home = () => {
     },
     {
       question: "Can I track my vehicle using a mobile app?",
-      answer: "Yes! SignTrack provides a powerful mobile app available for both iOS and Android devices. You can track your vehicle, receive alerts, view reports, and control various features directly from your smartphone."
+      answer: "Yes! MyTrackee provides a powerful mobile app available for both iOS and Android devices. You can track your vehicle, receive alerts, view reports, and control various features directly from your smartphone."
     },
     {
-      question: "Is the SignTrack car tracking device easily installable?",
+      question: "Is the MyTrackee car tracking device easily installable?",
       answer: "Yes, our car tracking devices are designed for easy installation. Our expert technicians can install the device professionally, and it typically takes only 1-2 hours to complete the installation process."
     },
     {
@@ -337,28 +337,28 @@ const Home = () => {
       answer: "No, our car tracking devices are designed to be energy-efficient and have minimal impact on your vehicle's battery. They use advanced power management technology to ensure optimal performance without draining the battery."
     },
     {
-      question: "How accurate is the location tracking provided by SignTrack?",
-      answer: "SignTrack provides highly accurate location tracking with precision up to 3-5 meters. Our advanced GPS technology ensures reliable and accurate location data in real-time."
+      question: "How accurate is the location tracking provided by MyTrackee?",
+      answer: "MyTrackee provides highly accurate location tracking with precision up to 3-5 meters. Our advanced GPS technology ensures reliable and accurate location data in real-time."
     },
     {
       question: "How does car tracking improve vehicle security?",
       answer: "Car tracking significantly improves vehicle security by providing real-time location monitoring, theft alerts, engine kill capabilities, geofencing, and immediate notifications for unauthorized vehicle movement."
     },
     {
-      question: "Can I track multiple vehicles with SignTrack?",
-      answer: "Yes, SignTrack offers fleet management solutions that allow you to track multiple vehicles from a single dashboard. Our platform supports unlimited vehicle tracking with comprehensive fleet management features."
+      question: "Can I track multiple vehicles with MyTrackee?",
+      answer: "Yes, MyTrackee offers fleet management solutions that allow you to track multiple vehicles from a single dashboard. Our platform supports unlimited vehicle tracking with comprehensive fleet management features."
     },
     {
-      question: "Can I transfer my SignTrack car tracker to a new vehicle?",
-      answer: "Yes, you can transfer your SignTrack car tracker to a new vehicle. Our technicians can professionally remove the device from your current vehicle and install it in your new vehicle."
+      question: "Can I transfer my MyTrackee car tracker to a new vehicle?",
+      answer: "Yes, you can transfer your MyTrackee car tracker to a new vehicle. Our technicians can professionally remove the device from your current vehicle and install it in your new vehicle."
     },
     {
-      question: "Is SignTrack available throughout Pakistan?",
-      answer: "Yes, SignTrack provides nationwide coverage across Pakistan. We have service centers and support teams in major cities including Islamabad, Lahore, Karachi, and many other locations."
+      question: "Is MyTrackee available throughout Pakistan?",
+      answer: "Yes, MyTrackee provides nationwide coverage across Pakistan. We have service centers and support teams in major cities including Islamabad, Lahore, Karachi, and many other locations."
     },
     {
-      question: "What kind of customer support does SignTrack offer?",
-      answer: "SignTrack provides 24/7 customer support through multiple channels including phone, email, and live chat. Our dedicated support team is always available to assist you with any questions or technical issues."
+      question: "What kind of customer support does MyTrackee offer?",
+      answer: "MyTrackee provides 24/7 customer support through multiple channels including phone, email, and live chat. Our dedicated support team is always available to assist you with any questions or technical issues."
     }
   ];
 
@@ -627,10 +627,10 @@ const Home = () => {
         <div className="container">
           <div className="about-content">
             <div className="about-text">
-              <h2>About Sign Track</h2>
+              <h2>About MyTrackee</h2>
               <h3>Drive Safe, Protect your Ride with GPS Tracker</h3>
-              <p>SignTrack is a leading car tracker company in Pakistan, specializing in cutting-edge car tracker solutions for vehicle safety and real-time monitoring. We provide comprehensive GPS tracking services that help you protect your valuable assets.</p>
-              <p>Why Choose SignTrack? We offer 24/7 support, nationwide coverage, and powerful mobile app integration. Our solutions use the latest GPS/GSM technology to provide accurate, real-time tracking information.</p>
+              <p>MyTrackee is a leading car tracker company in Pakistan, specializing in cutting-edge car tracker solutions for vehicle safety and real-time monitoring. We provide comprehensive GPS tracking services that help you protect your valuable assets.</p>
+              <p>Why Choose MyTrackee? We offer 24/7 support, nationwide coverage, and powerful mobile app integration. Our solutions use the latest GPS/GSM technology to provide accurate, real-time tracking information.</p>
               <p>Affordable Car Tracker Price in Pakistan - We believe that vehicle security should be accessible to everyone. That's why we offer competitive pricing and tailored plans to meet your specific needs.</p>
               
               <div className="progress-bars">
@@ -678,7 +678,7 @@ const Home = () => {
               <h2>What Service We Offer</h2>
             </div>
             <div className="services-intro">
-              <p>Sign Track Pvt Ltd Company excels all the other service providers in the GPS tracker fraternity.</p>
+              <p>MyTrackee Pvt Ltd Company excels all the other service providers in the GPS tracker fraternity.</p>
                               <Link to="/features" className="btn btn-primary">View Features</Link>
             </div>
           </div>
@@ -738,7 +738,7 @@ const Home = () => {
           <div className="why-choose-content">
             <div className="why-choose-left">
               <h2>Why <span className="highlight">Choose Us</span></h2>
-              <p>When it comes to vehicle security, SignTrack stands out as the best car tracker company in Pakistan and here's why:</p>
+              <p>When it comes to vehicle security, MyTrackee stands out as the best car tracker company in Pakistan and here's why:</p>
               
               <div className="benefits-list">
                 <div className="benefit-item">
@@ -909,7 +909,7 @@ const Home = () => {
               <h3>What Client Say About Us</h3>
               <div className="testimonial-content">
                 <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
-                <p>I've been using the car tracking service from Signtrack for the past year and it has been a game changer for my business. Not only can I see the real-time location of my fleet, but the detailed reports have helped me optimize routes and reduce fuel costs.</p>
+                <p>I've been using the car tracking service from MyTrackee for the past year and it has been a game changer for my business. Not only can I see the real-time location of my fleet, but the detailed reports have helped me optimize routes and reduce fuel costs.</p>
                 <div className="client-info">
                   <div className="client-avatar">UZ</div>
                   <span className="client-name">Usama Zafar</span>
