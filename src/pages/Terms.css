@@ -1,0 +1,51 @@
+.terms-page {
+  color: #222;
+}
+
+.terms-hero {
+  background: #0d47a1;
+  color: #fff;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.terms-hero h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.terms-content {
+  padding: 40px 0;
+}
+
+.terms-content h2 {
+  margin-top: 24px;
+  font-size: 24px;
+}
+
+.terms-content h3 {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.terms-content p {
+  line-height: 1.7;
+  margin: 12px 0;
+}
+
+.terms-content ul {
+  padding-left: 20px;
+  margin: 8px 0 16px 0;
+}
+
+.terms-content li {
+  margin: 6px 0;
+}
+
+.terms-page .container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
