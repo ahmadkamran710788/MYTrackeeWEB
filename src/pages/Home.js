@@ -542,7 +542,7 @@ const Home = () => {
                 <p>Leading car tracker company in Pakistan providing cutting-edge solutions for vehicle safety and real-time monitoring.</p>
                 <div className="hero-buttons">
                   <Link to="/features" className="btn btn-primary">View Features</Link>
-                  <Link to="/pricing" className="btn btn-secondary">Get Pricing</Link>
+                  <a href="#pricing" className="btn btn-secondary">Get Pricing</a>
                 </div>
               </div>
               <div className="hero-form">
@@ -698,7 +698,7 @@ const Home = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="pricing-section">
+      <section id="pricing" className="pricing-section">
         <div className="container">
           <h2>Car Tracker Price in Pakistan</h2>
           <div className="pricing-grid">
