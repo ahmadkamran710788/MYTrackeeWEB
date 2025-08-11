@@ -181,7 +181,7 @@ const Home = () => {
     };
 
     try {
-      const response = await fetch(`https://mytrackee-b16996ba42cc.herokuapp.com/mytrackee/package/`, {
+      const response = await fetch(`https://trackee-7475732abb81.herokuapp.com/mytrackee/package/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ const Home = () => {
     };
 
     try {
-      const response = await fetch(`https://mytrackee-b16996ba42cc.herokuapp.com/mytrackee/callback/`, {
+      const response = await fetch(`https://trackee-7475732abb81.herokuapp.com/mytrackee/callback/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ const Home = () => {
     };
 
     try {
-      const response = await fetch(`https://mytrackee-b16996ba42cc.herokuapp.com/mytrackee/order/`, {
+      const response = await fetch(`https://trackee-7475732abb81.herokuapp.com/mytrackee/order/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
